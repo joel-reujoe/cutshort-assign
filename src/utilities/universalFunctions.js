@@ -104,7 +104,7 @@ const getRangeCalls = async(countKey, rangeKey, page, limit)=>{
 	let range = await redisZrangeGet(rangeKey, 0, countRange, options);
 	let from = Math.abs(Math.ceil(limit * (page - 1)));
 	let end = from + Math.abs(limit);
-
+	range = range.filter(x=>x.isDeleted === false);
 	range = range.slice(from, end);
 	return {range, countRange};
 };
