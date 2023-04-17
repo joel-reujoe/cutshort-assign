@@ -19,7 +19,7 @@ It contains a simple routing example.
 ## Assumptions made
 * Admin user can edit other users data like email, password and role
 * Users can only comment on other users posts and not todos
-* In order to keep the apis secure we need to use jwt token and pass it in the header using authoriztion with the format `Bearer {token}`
+* In order to keep the apis other than `/login` and `/register` secure we need to use jwt token and pass it in the header using authoriztion with the format `Bearer {token}` 
 
 
 ## Admin Credentials
