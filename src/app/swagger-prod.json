@@ -5,7 +5,7 @@
       "title": "Cutshort",
       "contact": {}
     },
-    "host": "joelreuben28.onrender.com/",
+    "host": "joelreuben28.onrender.com",
     "basePath": "/",
     "securityDefinitions": {
       "Authorization": {
