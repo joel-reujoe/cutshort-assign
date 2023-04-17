@@ -1,0 +1,70 @@
+{
+  "name": "cutshort-assign",
+  "version": "1.0.0",
+  "description": "A NodeJs application with Express framework, MongoDb as database, Mongoose as ODM.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon .",
+    "test": "mocha test --timeout 20000",
+    "coverage": "nyc --reporter=lcov --reporter=text npm run test",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint-fix": "eslint --ignore-path .gitignore . --fix",
+    "prettier": "npx prettier --write '**/*.js'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-fix"
+    }
+  },
+  "repository": {
+    "type": "git"
+  },
+  "bugs": {},
+  "engines": {
+    "yarn": "1.x",
+    "node": "16.x"
+  },
+  "keywords": [
+    "NodeJs",
+    "Boilerplate",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "Joi"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "dependencies": {
+    "@google-cloud/logging": "^10.1.11",
+    "@sentry/node": "^6.19.6",
+    "@sentry/tracing": "^6.19.6",
+    "chai": "^4.3.7",
+    "chai-as-promised": "^7.1.1",
+    "chai-exclude": "^2.1.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "deep-equal-in-any-order": "^2.0.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-oauth2-jwt-bearer": "^1.4.1",
+    "gen-uid": "^0.0.2",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "md5": "^2.3.0",
+    "mocha": "^10.2.0",
+    "mongoose": "^6.2.10",
+    "path": "^0.12.7",
+    "postman-to-swagger": "github:tecfu/postman-to-swagger",
+    "redis": "^4.6.5",
+    "rollbar": "^2.24.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.12.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0"
+  }
+}

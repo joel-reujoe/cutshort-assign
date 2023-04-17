@@ -1,0 +1,899 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0",
+      "title": "Cutshort",
+      "contact": {}
+    },
+    "host": "joelreuben28.onrender.com/",
+    "basePath": "/",
+    "securityDefinitions": {
+      "Authorization": {
+        "type": "apiKey",
+        "name": "authorization",
+        "in": "header",
+        "description": "Enter the token with the `Bearer: ` prefix, e.g. \"Bearer abcde12345\""
+      }
+    },
+    "schemes": [
+      "https"
+    ],
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/login": {
+        "post": {
+          "summary": "Login",
+          "tags": [
+            "Auth"
+          ],
+          "operationId": "Login",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/LoginRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          }
+        }
+      },
+      "/register": {
+        "post": {
+          "summary": "Register",
+          "tags": [
+            "Auth"
+          ],
+          "operationId": "Register",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/RegisterRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          }
+        }
+      },
+      "/post": {
+        "post": {
+          "summary": "Add Post",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "AddPost",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/AddPostRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/post/{postId}": {
+        "patch": {
+          "summary": "Update Post",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "UpdatePost",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/UpdatePostRequest"
+              }
+            },
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        },
+        "delete": {
+          "summary": "Delete Post",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "DeletePost",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        },
+        "get": {
+          "summary": "Get Post By Id",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "GetPostById",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/posts": {
+        "get": {
+          "summary": "Get Posts",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "GetPosts",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/posts?page={page}&limit={limit}": {
+        "get": {
+          "summary": "Get Posts Pagination",
+          "tags": [
+            "Post"
+          ],
+          "operationId": "GetPostsPagination",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": ""
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/todo": {
+        "post": {
+          "summary": "Add Todo",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "AddTodo",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/AddTodoRequest"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/todo/{todoId}": {
+        "patch": {
+          "summary": "Update Todo",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "UpdateTodo",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/UpdateTodoRequest"
+              }
+            },
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        },
+        "delete": {
+          "summary": "Delete Todo",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "DeleteTodo",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        },
+        "get": {
+          "summary": "Get Todo By Id",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "GetTodoById",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "todoId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/todos": {
+        "get": {
+          "summary": "Get Todos",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "GetTodos",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/todos?page={page}&limit={limit}": {
+        "get": {
+          "summary": "Get Todos Pagination",
+          "tags": [
+            "Todo"
+          ],
+          "operationId": "GetTodos",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": ""
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/user/{userId}/posts": {
+        "get": {
+          "summary": "Get User Posts",
+          "tags": [
+            "User"
+          ],
+          "operationId": "GetUserPosts",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/user/{userId}/todos": {
+        "get": {
+          "summary": "Get User Todos",
+          "tags": [
+            "User"
+          ],
+          "operationId": "GetUserTodos",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/post/{postId}/comment": {
+        "post": {
+          "summary": "Add Comment",
+          "tags": [
+            "Comment"
+          ],
+          "operationId": "AddComment",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/AddCommentRequest"
+              }
+            },
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/post/{postId}/comments": {
+        "get": {
+          "summary": "Get Comments",
+          "tags": [
+            "Comment"
+          ],
+          "operationId": "GetComments",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "description": ""
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "description": ""
+            },
+            {
+              "name": "postId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/refreshToken": {
+        "post": {
+          "summary": "Refresh Token",
+          "tags": [
+            "Auth"
+          ],
+          "operationId": "RefreshToken",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/auth": {
+        "get": {
+          "summary": "Auth",
+          "tags": [
+            "Auth"
+          ],
+          "operationId": "Auth",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/logout": {
+        "delete": {
+          "summary": "Logout",
+          "tags": [
+            "Auth"
+          ],
+          "operationId": "Logout",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/user/{userId}": {
+        "patch": {
+          "summary": "Update User",
+          "tags": [
+            "User"
+          ],
+          "operationId": "UpdateUser",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "Body",
+              "in": "body",
+              "required": true,
+              "description": "",
+              "schema": {
+                "$ref": "#/definitions/UpdateUserRequest"
+              }
+            },
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        },
+        "get": {
+          "summary": "Get User",
+          "tags": [
+            "User"
+          ],
+          "operationId": "GetUser",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "type": "string",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      },
+      "/users": {
+        "get": {
+          "summary": "Get Users",
+          "tags": [
+            "User"
+          ],
+          "operationId": "GetUsers",
+          "deprecated": false,
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "page",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "description": ""
+            },
+            {
+              "name": "limit",
+              "in": "query",
+              "required": true,
+              "type": "integer",
+              "format": "int32",
+              "description": ""
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "",
+              "headers": {}
+            }
+          },
+          "security": [{"Authorization": []}]
+        }
+      }
+    },
+    "definitions": {
+      "LoginRequest": {
+        "title": "LoginRequest",
+        "example": {
+          "email": "joel.rdsouza1@yahoo.in",
+          "password": "frankcastle9"
+        },
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "RegisterRequest": {
+        "title": "RegisterRequest",
+        "example": {
+          "email": "joel.rdsouza1@yahoo.in",
+          "password": "frankcastle9"
+        },
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "AddPostRequest": {
+        "title": "AddPostRequest",
+        "example": {
+          "title": "Title New ",
+          "body": "Body New"
+        },
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ]
+      },
+      "UpdatePostRequest": {
+        "title": "UpdatePostRequest",
+        "example": {
+          "title": "Title Old",
+          "body": "Body Old"
+        },
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "body": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "body"
+        ]
+      },
+      "AddTodoRequest": {
+        "title": "AddTodoRequest",
+        "example": {
+          "title": "Second Todo"
+        },
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "UpdateTodoRequest": {
+        "title": "UpdateTodoRequest",
+        "example": {
+          "title": "First Todo Old"
+        },
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ]
+      },
+      "AddCommentRequest": {
+        "title": "AddCommentRequest",
+        "example": {
+          "comment": "Comment"
+        },
+        "type": "object",
+        "properties": {
+          "comment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "comment"
+        ]
+      },
+      "UpdateUserRequest": {
+        "title": "UpdateUserRequest",
+        "example": {
+          "role": "admin"
+        },
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "role"
+        ]
+      }
+    },
+    "security": [{"Authorization": []}]
+  }
