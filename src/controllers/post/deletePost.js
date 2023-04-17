@@ -1,7 +1,7 @@
 
 const { Post: PostService } = require('../../services');
 const { Redis: { redisZremByScore, redisGet, redisSet, redisClear } } = require('../../utilities');
-const { cacheKeys: { POST_COUNT, POST_RANGE, USER_POST, USER_POST_COUNT } } = require('../../constants');
+const { cacheKeys: { POST_COUNT, POST_RANGE, USER_POST, USER_POST_COUNT, POST_ID } } = require('../../constants');
 
 const updatePostCache = async(updatedAt, userId)=>{
 	redisZremByScore(POST_RANGE, updatedAt);
@@ -19,6 +19,7 @@ const deletePost = async({ userId, id })=>{
 
 	await PostService.updateOne({_id: id}, {isDeleted: true});
 	updatePostCache(post.updatedAt, userId);
+	redisClear(`POST_${id}`);
 
 };
 

@@ -1,7 +1,7 @@
 
 const { Todo: TodoService} = require('../../services');
 const { Redis: { redisZremByScore, redisGet, redisSet, redisClear } } = require('../../utilities');
-const { cacheKeys: { TODO_RANGE, TODO_COUNT, USER_TODO_COUNT } } = require('../../constants');
+const { cacheKeys: { TODO_RANGE, TODO_COUNT, USER_TODO_COUNT, TODO_ID } } = require('../../constants');
 const {  cacheKeys: { USER_TODO }} = require('../../constants');
 
 const updatePostCache = async(updatedAt, userId)=>{
@@ -21,7 +21,7 @@ const deleteTodo = async({ userId, id: _id })=>{
 
 	await TodoService.updateOne({_id}, {isDeleted: true});
 	updatePostCache(todo.updatedAt, userId);
-
+	redisClear(`${TODO_ID}${_id}`);
 };
 
 
