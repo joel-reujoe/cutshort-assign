@@ -1,7 +1,7 @@
 
 const { Post: PostService } = require('../../services');
 const { Redis: { redisZremByScore, redisZadd, redisClear }, UniversalFunctions: { getDataToSet } } = require('../../utilities');
-const { cacheKeys: { POST_RANGE, USER_POST } } = require('../../constants');
+const { cacheKeys: { POST_RANGE, USER_POST, POST_ID } } = require('../../constants');
 
 
 const updatePostCache = async(payload, updatedAt)=>{
@@ -20,7 +20,7 @@ const updatePost = async(payload)=>{
 	let data = await PostService.updateOne({_id: id}, dataToUpdate);
 	//update cache
 	updatePostCache(data, post.updatedAt);
-
+	redisClear(`${POST_ID}${id}`);
 };
 
 
