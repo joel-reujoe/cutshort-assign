@@ -19,7 +19,7 @@ const deletePost = async({ userId, id })=>{
 
 	await PostService.updateOne({_id: id}, {isDeleted: true});
 	updatePostCache(post.updatedAt, userId);
-	redisClear(`POST_${id}`);
+	redisClear(`${POST_ID}${id}`);
 
 };
 
